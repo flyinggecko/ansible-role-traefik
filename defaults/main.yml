@@ -1,0 +1,22 @@
+---
+# defaults file for flyinggecko.traefik
+traefik_install_dir: /usr/bin
+traefik_version: "2.8.8"
+traefik_docker_path: "unix:///var/run/docker.sock"
+traefik_binary_url: https://github.com/traefik/traefik/releases/download/v{{ traefik_version }}/traefik_v{{ traefik_version }}_linux_amd64.tar.gz
+traefik_bin_path: "{{ traefik_install_dir }}/traefik"
+traefik_config_dir: /etc/traefik
+traefik_dynamic_config_dir: "{{ traefik_config_dir }}/dynamic"
+traefik_template: traefik.toml.j2
+traefik_config_file: "{{ traefik_config_dir }}/traefik.toml"
+traefik_environment_file: "/etc/default/traefik"
+traefik_systemd_unit_template: traefik.service
+traefik_systemd_unit_dest: /etc/systemd/system/traefik.service
+traefik_update: false
+
+traefik_acme_email: test@example.com
+traefik_entrypoint_address: localhost
+traefik_dns_challenge_provider: ovh
+
+traefik_dynamic_configurations:
+  test.toml: ""
